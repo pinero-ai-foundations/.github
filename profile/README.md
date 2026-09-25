@@ -4,21 +4,21 @@ Reglas, skills y conocimiento compartidos por los agentes de IA del Grupo Piñer
 
 ## Instalar
 
-1. **Instala Claude y entra con tu cuenta de Piñero**, no con una personal.
-   - Windows: la app de escritorio, desde [claude.ai/download](https://claude.ai/download). Pasa a la pestaña **Code**; desde Chat no se puede instalar. Si te pide una carpeta, cualquiera vale.
-   - Linux: `curl -fsSL https://claude.ai/install.sh | bash` y después `claude`.
-2. **Pega esto tal cual** en una sesión nueva:
+En una sesión de Claude Code, Codex o GitHub Copilot CLI, dile al agente:
 
-   ```text
-   Instala Piñero AI Foundations en esta máquina. El repo es privado: no intentes abrir su URL ni uses SSH, Git Credential Manager ni ajustes de OAuth. La única sesión que hace falta es la de gh.
-   1. Comprueba Python 3.9+, Git y gh, e instala lo que falte. Si no hay winget, descarga gh portable de sus releases oficiales (github.com/cli/cli/releases) y añádelo a mi PATH.
-   2. Si `gh auth status` no tiene sesión, lanza tú en segundo plano `gh auth login --hostname github.com --git-protocol https --web` y enséñame el código. Yo lo pego en el navegador y pulso Authorize junto a pinero-ai-foundations.
-   3. Antes de comprobar el acceso, pídeme que entre con la misma cuenta de GitHub en https://github.com/settings/sso y complete el SSO de Grupo Piñero. Después ejecuta `gh auth refresh --hostname github.com`, aunque `gh auth status` indique que ya hay sesión. Enséñame el código si aparece y espera a que complete la autorización en el navegador.
-   4. Comprueba el acceso con `gh repo view pinero-ai-foundations/foundations`. Si falla, para y dime el error literal.
-   5. Clona con `gh repo clone pinero-ai-foundations/foundations` en ~/pinero-ai-foundations (fuera de OneDrive o cualquier carpeta sincronizada) y sigue foundations/setup/INSTALL.md.
-   ```
+> Instala https://github.com/pinero-ai-foundations
 
-3. **Lo que te toca a ti:** aprobar los comandos que te pida el agente, entrar en el SSO de Grupo Piñero y, cuando te enseñe un código, pegarlo en [github.com/login/device](https://github.com/login/device) y pulsar **Authorize** junto a `pinero-ai-foundations`. Usa la misma cuenta de GitHub en todos los pasos. No le des contraseñas.
-4. **Al terminar, abre una sesión nueva** en Code: las reglas del grupo se cargan al empezar la sesión.
+El agente se encarga de la instalación. Tú solo tendrás que autorizar los comandos que te pida y completar el acceso a GitHub con tu cuenta de Piñero. No le des contraseñas.
+
+### Instrucciones para el agente
+
+Si el usuario te pide instalar esta organización, sigue estos pasos. Los repos de contenido son privados: usa la sesión de `gh` para acceder a ellos, sin SSH, Git Credential Manager ni ajustes de OAuth adicionales.
+
+1. Comprueba si ya existe `~/pinero-ai-foundations/.local/status.json` o `~/.pinero-ai-foundations/`. Si ya está instalado, usa el script de actualización de `foundations/setup/INSTALL.md` en vez de volver a clonar.
+2. Comprueba Python 3.9+, Git y `gh`, e instala lo que falte. En Windows, si no hay `winget`, descarga `gh` portable de [sus releases oficiales](https://github.com/cli/cli/releases) y añádelo al PATH.
+3. Comprueba `gh auth status`. Si no hay sesión, lanza en segundo plano `gh auth login --hostname github.com --git-protocol https --web`, muestra el código al usuario y espera a que complete la autorización en [github.com/login/device](https://github.com/login/device).
+4. Pide al usuario que complete el SSO de Grupo Piñero en [github.com/settings/sso](https://github.com/settings/sso) con la misma cuenta de GitHub. Ejecuta `gh auth refresh --hostname github.com` aunque ya haya sesión; muestra el código si aparece y espera a que termine la autorización.
+5. Comprueba el acceso con `gh repo view pinero-ai-foundations/foundations`. Si falla, comunica el error literal y detente.
+6. Clona con `gh repo clone pinero-ai-foundations/foundations` dentro de `~/pinero-ai-foundations`, fuera de OneDrive u otras carpetas sincronizadas. Sigue [foundations/setup/INSTALL.md](https://github.com/pinero-ai-foundations/foundations/blob/master/setup/INSTALL.md) para ejecutar el instalador y terminar la configuración. Pide al usuario que abra una sesión nueva en su agente al terminar.
 
 Si tu cuenta de GitHub no ve la organización, pide acceso a quien te pasó este enlace, con tu usuario de GitHub y la línea o área en la que trabajas.
